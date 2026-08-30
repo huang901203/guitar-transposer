@@ -10,9 +10,9 @@
   <div class="container">
     <h1>🎸 吉他轉調與順階和弦查詢</h1>
     
+    <!-- 選擇主音 (加入所有半音) -->
     <div class="section">
-      <h3>1. 選擇主音 (Key)</h3>
-      <!-- 補齊了包含升降記號的 12 個半音 -->
+      <h3>1. 選擇目標音高 (Key)</h3>
       <div class="btn-group" id="root-buttons">
         <button class="btn root-btn active" data-root="C">C</button>
         <button class="btn root-btn" data-root="C#">C#</button>
@@ -29,6 +29,7 @@
       </div>
     </div>
 
+    <!-- 選擇大小調 -->
     <div class="section">
       <h3>2. 選擇調性 (Mode)</h3>
       <div class="btn-group" id="mode-buttons">
@@ -37,14 +38,24 @@
       </div>
     </div>
 
-    <div class="result-section">
-      <h2>當前調性：<span id="current-key-title">C 大調</span></h2>
-      
-      <!-- 用來顯示 Capo 建議的區塊 -->
-      <div id="capo-suggestions" class="capo-box" style="display: none;"></div>
+    <!-- 選擇移調夾 (Capo) -->
+    <div class="section">
+      <h3>3. 選擇移調夾 (Capo)</h3>
+      <div class="btn-group" id="capo-buttons">
+        <button class="btn capo-btn active" data-capo="0">Capo 0</button>
+        <button class="btn capo-btn" data-capo="1">Capo 1</button>
+        <button class="btn capo-btn" data-capo="2">Capo 2</button>
+        <button class="btn capo-btn" data-capo="3">Capo 3</button>
+        <button class="btn capo-btn" data-capo="4">Capo 4</button>
+        <button class="btn capo-btn" data-capo="5">Capo 5</button>
+      </div>
+    </div>
 
-      <!-- 顯示順階和弦的區塊 -->
+    <!-- 顯示結果 -->
+    <div class="result-section">
+      <h2 id="current-key-title" style="color: #409eff; font-size: 1.2rem; line-height: 1.5;"></h2>
       <div class="chords-grid" id="chords-display">
+        <!-- 由 JavaScript 動態繪製 -->
       </div>
     </div>
   </div>

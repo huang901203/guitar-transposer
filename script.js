@@ -15,14 +15,9 @@ const SCALES = {
   }
 };
 
-// 新增：吉他最好按的指型
-const PREFERRED_SHAPES = {
-  major: ['C', 'D', 'E', 'G', 'A'],
-  minor: ['A', 'D', 'E'] // 代表 Am, Dm, Em
-};
-
 let currentRoot = 'C';
 let currentMode = 'major';
+let currentCapo = 0; // 新增 Capo 變數，預設為 0
 
 function getNoteByOffset(root, offset) {
   const rootIndex = NOTES.indexOf(root);
@@ -30,58 +25,29 @@ function getNoteByOffset(root, offset) {
   return NOTES[targetIndex];
 }
 
-// 新增：計算移調夾建議的函數
-function updateCapoSuggestions() {
-  const targetIndex = NOTES.indexOf(currentRoot);
-  const shapes = PREFERRED_SHAPES[currentMode];
-  const suggestions = [];
-
-  shapes.forEach(shapeNote => {
-    const shapeIndex = NOTES.indexOf(shapeNote);
-    let capo = targetIndex - shapeIndex;
-    
-    // 如果相減是負數，代表要跨過八度，所以加 12 個半音
-    if (capo < 0) {
-      capo += 12;
-    }
-    
-    const modeSuffix = currentMode === 'minor' ? 'm' : '';
-    
-    // 通常 Capo 只夾 1~7 格，超過 7 格吉他會很難彈
-    if (capo > 0 && capo <= 7) {
-      suggestions.push(`Capo ${capo} 彈 <strong>${shapeNote}${modeSuffix}</strong> 調指型`);
-    } else if (capo === 0) {
-      suggestions.push(`無需 Capo (Capo 0) ，直接彈 <strong>${shapeNote}${modeSuffix}</strong>`);
-    }
-  });
-
-  // 將結果依照 Capo 數字小到大排序
-  suggestions.sort((a, b) => {
-    const numA = a.includes('無需') ? 0 : parseInt(a.match(/Capo (\d+)/)[1]);
-    const numB = b.includes('無需') ? 0 : parseInt(b.match(/Capo (\d+)/)[1]);
-    return numA - numB;
-  });
-
-  const capoBox = document.getElementById('capo-suggestions');
-  if (suggestions.length > 0) {
-    capoBox.innerHTML = `<strong>🎸 移調夾 (Capo) 建議：</strong><br>` + 
-                        suggestions.map(s => `<div class="capo-item">💡 ${s}</div>`).join('');
-    capoBox.style.display = 'block';
-  } else {
-    capoBox.style.display = 'none';
-  }
-}
-
 function updateChords() {
   const modeData = SCALES[currentMode];
-  document.getElementById('current-key-title').innerText = `${currentRoot} ${modeData.name}`;
+  
+  // 計算「吉他手實際要按」的根音 (目標音高 - Capo格數)
+  // 加上 12 是為了避免相減變成負數
+  const targetRootIndex = NOTES.indexOf(currentRoot);
+  const fingeringRootIndex = (targetRootIndex - currentCapo + 12) % 12;
+  const fingeringRoot = NOTES[fingeringRootIndex];
+
+  // 更新顯示標題
+  const titleEl = document.getElementById('current-key-title');
+  if (currentCapo === 0) {
+    titleEl.innerText = `🎵 聽覺音高：${currentRoot} ${modeData.name}\n🎸 彈奏和弦：${fingeringRoot} ${modeData.name} (不夾 Capo)`;
+  } else {
+    titleEl.innerText = `🎵 聽覺音高：${currentRoot} ${modeData.name}\n🎸 彈奏和弦：${fingeringRoot} ${modeData.name} (夾 Capo ${currentCapo})`;
+  }
 
   const chordsContainer = document.getElementById('chords-display');
   chordsContainer.innerHTML = '';
 
-  // 1. 繪製 1~7 級和弦
+  // 使用「吉他手實際要按」的根音 (fingeringRoot) 來推算 1~7 級和弦
   for (let i = 0; i < 7; i++) {
-    const note = getNoteByOffset(currentRoot, modeData.offsets[i]);
+    const note = getNoteByOffset(fingeringRoot, modeData.offsets[i]);
     const chordName = note + modeData.suffixes[i];
     const degreeName = modeData.degrees[i];
 
@@ -93,12 +59,9 @@ function updateChords() {
     `;
     chordsContainer.appendChild(card);
   }
-
-  // 2. 更新並顯示 Capo 建議
-  updateCapoSuggestions();
 }
 
-// 綁定按鈕點擊事件
+// 監聽主音按鈕
 document.querySelectorAll('.root-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     document.querySelectorAll('.root-btn').forEach(b => b.classList.remove('active'));
@@ -108,6 +71,7 @@ document.querySelectorAll('.root-btn').forEach(btn => {
   });
 });
 
+// 監聽大小調按鈕
 document.querySelectorAll('.mode-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
@@ -117,5 +81,15 @@ document.querySelectorAll('.mode-btn').forEach(btn => {
   });
 });
 
-// 網頁載入時先執行一次
+// 監聽 Capo 按鈕 (新增)
+document.querySelectorAll('.capo-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    document.querySelectorAll('.capo-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    currentCapo = parseInt(e.target.dataset.capo);
+    updateChords();
+  });
+});
+
+// 初始渲染
 updateChords();
