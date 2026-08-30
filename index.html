@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>吉他轉調與順階和弦查詢器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎸 吉他轉調與順階和弦查詢</h1>
+    
+    <div class="section">
+      <h3>1. 選擇主音 (Key)</h3>
+      <div class="btn-group" id="root-buttons">
+        <button class="btn root-btn active" data-root="C">C</button>
+        <button class="btn root-btn" data-root="D">D</button>
+        <button class="btn root-btn" data-root="E">E</button>
+        <button class="btn root-btn" data-root="F">F</button>
+        <button class="btn root-btn" data-root="G">G</button>
+        <button class="btn root-btn" data-root="A">A</button>
+        <button class="btn root-btn" data-root="B">B</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>2. 選擇調性 (Mode)</h3>
+      <div class="btn-group" id="mode-buttons">
+        <button class="btn mode-btn active" data-mode="major">大調 (Major)</button>
+        <button class="btn mode-btn" data-mode="minor">小調 (Minor)</button>
+      </div>
+    </div>
+
+    <div class="result-section">
+      <h2>當前調性：<span id="current-key-title">C 大調</span></h2>
+      <div class="chords-grid" id="chords-display">
+        </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
