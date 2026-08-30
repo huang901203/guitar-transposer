@@ -3,7 +3,7 @@ const NOTES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 const SCALES = {
   major: {
     name: '大調',
-    degrees: ['Ⅰ', 'ⅱ', 'ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ°'],
+    degrees: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ'],
     offsets: [0, 2, 4, 5, 7, 9, 11],
     suffixes: ['', 'm', 'm', '', '', 'm', 'dim']
   },
