@@ -12,13 +12,19 @@
     
     <div class="section">
       <h3>1. 選擇主音 (Key)</h3>
+      <!-- 補齊了包含升降記號的 12 個半音 -->
       <div class="btn-group" id="root-buttons">
         <button class="btn root-btn active" data-root="C">C</button>
+        <button class="btn root-btn" data-root="C#">C#</button>
         <button class="btn root-btn" data-root="D">D</button>
+        <button class="btn root-btn" data-root="D#">D#</button>
         <button class="btn root-btn" data-root="E">E</button>
         <button class="btn root-btn" data-root="F">F</button>
+        <button class="btn root-btn" data-root="F#">F#</button>
         <button class="btn root-btn" data-root="G">G</button>
+        <button class="btn root-btn" data-root="G#">G#</button>
         <button class="btn root-btn" data-root="A">A</button>
+        <button class="btn root-btn" data-root="A#">A#</button>
         <button class="btn root-btn" data-root="B">B</button>
       </div>
     </div>
@@ -33,8 +39,13 @@
 
     <div class="result-section">
       <h2>當前調性：<span id="current-key-title">C 大調</span></h2>
+      
+      <!-- 用來顯示 Capo 建議的區塊 -->
+      <div id="capo-suggestions" class="capo-box" style="display: none;"></div>
+
+      <!-- 顯示順階和弦的區塊 -->
       <div class="chords-grid" id="chords-display">
-        </div>
+      </div>
     </div>
   </div>
 
