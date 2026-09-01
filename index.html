@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>吉他轉調與順階和弦查詢器</title>
   <link rel="stylesheet" href="style.css">
+  
+  <!-- 加入 Google AdSense 核心代碼 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5026599621582920" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
@@ -60,18 +63,23 @@
     </div>
   </div>
 
-  <!-- 底部固定廣告區塊 -->
-  <div class="bottom-ad-container">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5026599621582920" crossorigin="anonymous"></script>
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-5026599621582920"
-         data-ad-slot="請填入你的廣告單元編號"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+  <!-- ======= 底部固定廣告區塊 ======= -->
+  <div class="bottom-ad-container" id="ad-container">
+    <!-- 關閉按鈕，點擊後會將 ad-container 隱藏 -->
+    <button class="close-ad-btn" onclick="document.getElementById('ad-container').style.display='none'">關閉廣告 ✕</button>
+    
+    <!-- 廣告顯示區塊 (請將你在 AdSense 後台建立的「手動廣告單元」代碼貼在這裡) -->
+    <div class="ad-content">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5026599621582920"
+           data-ad-slot="這裡請填入你的廣告單元編號"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
   </div>
 
   <script src="script.js"></script>

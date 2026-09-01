@@ -133,3 +133,47 @@ h3 {
   padding: 10px 0;
   min-height: 90px;
 }
+/* =========================================
+   以下為底部固定廣告區塊的樣式
+   ========================================= */
+
+/* 1. 將網頁底部墊高，防止使用者滑到底部時被廣告擋住內容 */
+body {
+  padding-bottom: 120px; 
+}
+
+/* 2. 廣告容器：永遠固定在螢幕最下方 */
+.bottom-ad-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa; /* 淺灰色背景 */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* 確保浮在最上層 */
+  text-align: center;
+  min-height: 90px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 3. 關閉廣告按鈕：漂浮在廣告框的右上方 */
+.close-ad-btn {
+  position: absolute;
+  top: -30px; /* 往上推出廣告框 */
+  right: 15px; /* 靠右對齊 */
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px 6px 0 0; /* 只有上方有圓角 */
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.2s;
+}
+
+.close-ad-btn:hover {
+  background-color: #343a40; /* 滑鼠移過去變深色 */
+}
