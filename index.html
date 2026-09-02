@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+  <!-- Google Tag Manager (必須放在 head 的最上方) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M99Z7V6R');</script>
+  <!-- End Google Tag Manager -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>吉他轉調與順階和弦查詢器</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) (必須緊接在 body 標籤之後) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M99Z7V6R"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <div class="container">
     <h1>🎸 吉他轉調與順階和弦查詢</h1>
     
@@ -64,7 +77,7 @@
   <div class="bottom-action-container" id="action-container">
     <button class="close-action-btn" onclick="document.getElementById('action-container').style.display='none'">關閉 ✕</button>
     
-<div class="action-content">
+    <div class="action-content">
       <span class="action-text">喜歡這個轉調器嗎？</span>
       
       <!-- 建議按鈕 (白底) -->
@@ -76,6 +89,7 @@
       <!-- IG按鈕 (漸層底) -->
       <a href="https://www.instagram.com/imweizhe1203/" target="_blank" class="action-btn ig-btn"> 我的 IG</a>
     </div>
+  </div> <!-- 修復：補上原本遺漏的關閉標籤 -->
 
   <script src="script.js"></script>
 </body>
