@@ -5,15 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>吉他轉調與順階和弦查詢器</title>
   <link rel="stylesheet" href="style.css">
-  
-  <!-- 加入 Google AdSense 核心代碼 -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5026599621582920" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
     <h1>🎸 吉他轉調與順階和弦查詢</h1>
     
-    <!-- 選擇主音 (加入所有半音) -->
+    <!-- 選擇主音 -->
     <div class="section">
       <h3>1. 選擇目標音高 (Key)</h3>
       <div class="btn-group" id="root-buttons">
@@ -41,7 +38,7 @@
       </div>
     </div>
 
-    <!-- 選擇移調夾 (Capo) -->
+    <!-- 選擇移調夾 -->
     <div class="section">
       <h3>3. 選擇移調夾 (Capo)</h3>
       <div class="btn-group" id="capo-buttons">
@@ -63,24 +60,22 @@
     </div>
   </div>
 
-  <!-- ======= 底部固定廣告區塊 ======= -->
-  <div class="bottom-ad-container" id="ad-container">
-    <!-- 關閉按鈕，點擊後會將 ad-container 隱藏 -->
-    <button class="close-ad-btn" onclick="document.getElementById('ad-container').style.display='none'">關閉廣告 ✕</button>
+  <!-- ======= 底部固定贊助與建議區塊 ======= -->
+  <div class="bottom-action-container" id="action-container">
+    <button class="close-action-btn" onclick="document.getElementById('action-container').style.display='none'">關閉 ✕</button>
     
-    <!-- 廣告顯示區塊 (請將你在 AdSense 後台建立的「手動廣告單元」代碼貼在這裡) -->
-    <div class="ad-content">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-5026599621582920"
-           data-ad-slot="這裡請填入你的廣告單元編號"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+<div class="action-content">
+      <span class="action-text">喜歡這個轉調器嗎？</span>
+      
+      <!-- 建議按鈕 (白底) -->
+      <a href="https://forms.gle/vydv2G1ThjxATYvL7" target="_blank" class="action-btn feedback-btn">📝 建議/點歌</a>
+      
+      <!-- 音樂按鈕 (深藍底) -->
+      <a href="https://streetvoice.com/hjj1203/songs/" target="_blank" class="action-btn streetvoice-btn">🎸 我寫的歌</a>
+      
+      <!-- IG按鈕 (漸層底) -->
+      <a href="https://www.instagram.com/imweizhe1203/" target="_blank" class="action-btn ig-btn"> 我的 IG</a>
     </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
